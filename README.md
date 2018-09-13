@@ -1,1 +1,2 @@
-# REST-API-demos
+# README
+Bibox REST API demos.

@@ -1,0 +1,18 @@
+{
+  "name": "api-sample",
+  "version": "1.0.0",
+  "description": "Bibox api sample",
+  "main": "",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Bibox",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^3.1.9-1",
+    "request": "*"
+  }
+}
