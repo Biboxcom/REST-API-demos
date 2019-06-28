@@ -180,6 +180,7 @@ let getUserOrderPending = function (pair, account_type, page, size) {
         {
             cmd: "orderpending/orderPendingList",
             body: {
+                account_type: account_type,
                 pair: pair,
                 page: page,
                 size: size
@@ -199,9 +200,28 @@ let getUserOrderHistory = function (pair, account_type, page, size) {
         {
             cmd: "orderpending/orderHistoryList",
             body: {
+                account_type: account_type,
                 pair: pair,
                 page: page,
                 size: size
+            }
+        }
+    ];
+
+    doApiRequestWithApikey(TRADE_URI, cmds, function (res) {
+        console.log('%s: return：', _func_name_, JSON.stringify(res));
+    });
+};
+
+let getOrder = function (order_id, account_type) {
+    let _func_name_ = 'getOrder';
+
+    let cmds = [
+        {
+            cmd: "orderpending/order",
+            body: {
+                account_type: account_type,
+                id: String(order_id)
             }
         }
     ];
@@ -288,6 +308,8 @@ let doTest = function () {
     getUserOrderHistory('BIX_BTC', 0, 1, 10);
     // user assets
     getUserAssets();
+    // get order info by order id
+    getOrder("9788952022908451", 0);
 
     //place an order
     let trade_order = {
@@ -301,7 +323,7 @@ let doTest = function () {
     doTrade(trade_order);
 
     //cancel an order
-    doCancelTrade(7790955);//orders_id
+    doCancelTrade("9788952022908451");//orders_id
 };
 
 // doTest();
